@@ -86,11 +86,12 @@ nothing to commit, working tree clean
 Будут проигнорированы:
 - все содержимое каталога *.terraform*;
 - файлы с расширением: *tfstate, tfvars, _override.tf, _override.tf.json*; 
-- файлы: *crash.log, override.tf, override.tf.json, .terraformrc, terraform.rc*
-.
+- файлы: *crash.log, override.tf, override.tf.json, .terraformrc, terraform.rc*.
 
-	git add .
-	git commit -m 'Added gitignore'
+```
+git add *
+git commit -m 'Added gitignore'
+```
 
 >[master ee41bd2] Added gitignore  
 > 2 file changed, 0 insertions(+), 0 deletions(-)  
