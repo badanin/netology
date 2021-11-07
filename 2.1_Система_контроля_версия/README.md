@@ -89,7 +89,7 @@ nothing to commit, working tree clean
 - файлы: *crash.log, override.tf, override.tf.json, .terraformrc, terraform.rc*
 .
 
-	git add *
+	git add .
 	git commit -m 'Added gitignore'
 
 >[master ee41bd2] Added gitignore  
