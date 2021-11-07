@@ -1,10 +1,10 @@
 # Домашнее задание к занятию «1.1. Введение в DevOps»
 ## Задание №1 - Подготовка рабочей среды
-- [netology.tf](netology.tf) – терраформ,
-- [netology.sh](netology.sh) – bash,
-- [netology.md](netology.md) – markdown,
-- [netology.yaml](netology.yaml) – yaml,
-- [netology.jsonnet](netology.jsonnet) – jsonnet.
+- [netology.tf](files/netology.tf) – терраформ,
+- [netology.sh](files/netology.sh) – bash,
+- [netology.md](files/netology.md) – markdown,
+- [netology.yaml](files/netology.yaml) – yaml,
+- [netology.jsonnet](files/netology.jsonnet) – jsonnet.
 
 ## Задание №2 - Описание жизненного цикла задачи (разработки нового функционала)
 Для этого необходимо:
@@ -14,4 +14,3 @@
 - Обеспечить необходимый уровень безопасности;
 - Проводить тестовые выкладки в изолированных стендах;
 - Отслеживать работоспособность всех задействованных систем.
-
