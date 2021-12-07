@@ -150,20 +150,20 @@ done' > merge.sh
 
 	cat -n rebase.sh
 	
->  1	#!/bin/bash  
->  2	# display command line options  
->  3  
->  4	count=1  
->  5	for param in "$@"; do  
->  6	<<<<<<< HEAD  
->  7	    echo "\$@ Parameter #$count = $param"  
->  8	=======  
->  9	    echo "Parameter: $param"  
->  10	>>>>>>> c995c72 (git-rebase 1)  
->  11	    count=$(( $count + 1 ))  
->  12	done  
->  13  
->  14	echo "====="
+> 1	#!/bin/bash  
+> 2	#display command line options  
+> 3  
+> 4	count=1  
+> 5	for param in "$@"; do  
+> 6	<<<<<<< HEAD  
+> 7	    echo "\$@ Parameter #$count = $param"  
+> 8	=======  
+> 9	    echo "Parameter: $param"  
+> 10	>>>>>>> c995c72 (git-rebase 1)  
+> 11	    count=$(( $count + 1 ))  
+> 12	done  
+> 13  
+> 14	echo "====="
 
 Удалим строчки 6, 8-10
 
