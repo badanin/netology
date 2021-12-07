@@ -77,7 +77,7 @@ done' > merge.sh
 
 	git log --oneline
 
->24fab22 (HEAD -> master, github/master) add echo
+>24fab22 (HEAD -> master, github/master) add echo  
 >**077e6c0** prepare for merge and rebase
 
 	git checkout 077e6c0
@@ -109,8 +109,8 @@ done' > merge.sh
 	git switch master
 	git merge git-merge
 
->Merge made by the 'recursive' strategy.
-> merge.sh | 5 +++--
+>Merge made by the 'recursive' strategy.  
+> merge.sh | 5 +++--  
 > 1 file changed, 3 insertions(+), 2 deletions(-)
 
 	git push
@@ -133,39 +133,37 @@ done' > merge.sh
 	git switch git-rebase
 	git rebase -i master
 
->
-  pick c995c72 git-rebase 1
-  fixup 8db0993 git-rebase 2
-  
->
-  Auto-merging rebase.sh
-  CONFLICT (content): Merge conflict in rebase.sh
-  error: could not apply c995c72... git-rebase 1
-  Resolve all conflicts manually, mark them as resolved with
-  "git add/rm <conflicted_files>", then run "git rebase --continue".
-  You can instead skip this commit: run "git rebase --skip".
-  To abort and get back to the state before "git rebase", run "git rebase --abort".
-  Could not apply c995c72... git-rebase 1
+
+>pick c995c72 git-rebase 1  
+>fixup 8db0993 git-rebase 2  
+>  
+>Auto-merging rebase.sh  
+>CONFLICT (content): Merge conflict in rebase.sh  
+>error: could not apply c995c72... git-rebase 1  
+>Resolve all conflicts manually, mark them as resolved with  
+>"git add/rm <conflicted_files>", then run "git rebase --continue".  
+>You can instead skip this commit: run "git rebase --skip".  
+>To abort and get back to the state before "git rebase", run "git rebase --abort".  
+>Could not apply c995c72... git-rebase 1
 
 Устраним конфликты
 
 	cat -n rebase.sh
 	
->
-  1	#!/bin/bash
-  2	# display command line options
-  3	
-  4	count=1
-  5	for param in "$@"; do
-  6	<<<<<<< HEAD
-  7	    echo "\$@ Parameter #$count = $param"
-  8	=======
-  9	    echo "Parameter: $param"
-  10	>>>>>>> c995c72 (git-rebase 1)
-  11	    count=$(( $count + 1 ))
-  12	done
-  13	
-  14	echo "====="
+>  1	#!/bin/bash  
+>  2	# display command line options  
+>  3  
+>  4	count=1  
+>  5	for param in "$@"; do  
+>  6	<<<<<<< HEAD  
+>  7	    echo "\$@ Parameter #$count = $param"  
+>  8	=======  
+>  9	    echo "Parameter: $param"  
+>  10	>>>>>>> c995c72 (git-rebase 1)  
+>  11	    count=$(( $count + 1 ))  
+>  12	done  
+>  13  
+>  14	echo "====="
 
 Удалим строчки 6, 8-10
 
@@ -175,52 +173,49 @@ done' > merge.sh
 
 	cat rebase.sh
 
->
-  #!/bin/bash
-  # display command line options
->
-  count=1
-  for param in "$@"; do
-  echo "\$@ Parameter #$count = $param"
-  count=$(( $count + 1 ))
-  done
->
-  echo "====="
+>  #!/bin/bash  
+>  # display command line options  
+>  
+>  count=1  
+>  for param in "$@"; do  
+>  echo "\$@ Parameter #$count = $param"  
+>  count=$(( $count + 1 ))  
+>  done  
+>  
+>  echo "====="
 
 Добавим файл и продолжим `rebase`
 
 	git add rebase.sh
 	git rebase --continue
 
->
- Auto-merging rebase.sh
- CONFLICT (content): Merge conflict in rebase.sh
- error: could not apply 8db0993... git-rebase 2
- Resolve all conflicts manually, mark them as resolved with
- "git add/rm <conflicted_files>", then run "git rebase --continue".
- You can instead skip this commit: run "git rebase --skip".
- To abort and get back to the state before "git rebase", run "git rebase --abort".
- Could not apply 8db0993... git-rebase 2
+> Auto-merging rebase.sh  
+> CONFLICT (content): Merge conflict in rebase.sh  
+> error: could not apply 8db0993... git-rebase 2  
+> Resolve all conflicts manually, mark them as resolved with  
+> "git add/rm <conflicted_files>", then run "git rebase --continue".  
+> You can instead skip this commit: run "git rebase --skip".  
+> To abort and get back to the state before "git rebase", run "git rebase --abort".  
+> Could not apply 8db0993... git-rebase 2
 
 Устраним конфликты 
 
 	cat -n rebase.sh
 
->
- 1	#!/bin/bash
- 2	# display command line options
- 3	
- 4	count=1
- 5	for param in "$@"; do
- 6	<<<<<<< HEAD
- 7	    echo "\$@ Parameter #$count = $param"
- 8	=======
- 9	    echo "Next parameter: $param"
- 10	>>>>>>> 8db0993 (git-rebase 2)
- 11	    count=$(( $count + 1 ))
- 12	done
- 13	
- 14	echo "====="
+> 1	#!/bin/bash  
+> 2	# display command line options  
+> 3  
+> 4	count=1  
+> 5	for param in "$@"; do  
+> 6	<<<<<<< HEAD  
+> 7	    echo "\$@ Parameter #$count = $param"  
+> 8	=======  
+> 9	    echo "Next parameter: $param"  
+> 10	>>>>>>> 8db0993 (git-rebase 2)  
+> 11	    count=$(( $count + 1 ))  
+> 12	done  
+> 13  
+> 14	echo "====="
 
 Удалим строчки 6-8, 10
 
@@ -231,9 +226,49 @@ done' > merge.sh
 	git add rebase.sh
 	git rebase --continue
 
->
-[detached HEAD 41ad72a] Merge branch 'git-merge'
- Date: Tue Dec 7 15:03:29 2021 +0300
-Successfully rebased and updated refs/heads/git-rebase.
 
+>[detached HEAD 41ad72a] Merge branch 'git-merge'  
+> Date: Tue Dec 7 15:03:29 2021 +0300  
+>Successfully rebased and updated refs/heads/git-rebase.
 
+При отправке на репозиторий возникает ошибка
+
+	git push -u github git-rebase
+
+>To github.com:badanin/02-git-03-branching.git  
+> ! [rejected]        git-rebase -> git-rebase (non-fast-forward)  
+>error: failed to push some refs to 'github.com:badanin/02-git-03-branching.git'  
+>hint: Updates were rejected because the tip of your current branch is behind  
+>hint: its remote counterpart. Integrate the remote changes (e.g.  
+>hint: 'git pull ...') before pushing again.  
+>hint: See the 'Note about fast-forwards' in 'git push --help' for details.  
+
+Повторим с флагом `force`
+
+	git push -u github git-rebase -f
+
+>Enumerating objects: 7, done.  
+>Counting objects: 100% (7/7), done.  
+>Delta compression using up to 12 threads  
+>Compressing objects: 100% (3/3), done.  
+>Writing objects: 100% (3/3), 361 bytes | 361.00 KiB/s, done.  
+>Total 3 (delta 1), reused 0 (delta 0), pack-reused 0  
+>remote: Resolving deltas: 100% (1/1), completed with 1 local object.  
+>To github.com:badanin/02-git-03-branching.git  
+> + 8db0993...41ad72a git-rebase -> git-rebase (forced update)  
+>Branch 'git-rebase' set up to track remote branch 'git-rebase' from 'github'.
+
+Выполним `merge`
+
+	git switch master
+	git merge git-rebase
+
+>Merge made by the 'recursive' strategy.  
+> rebase.sh | 2 +-  
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+ 
+ **Результат**
+ 
+	git push
+
+![GIT Network end image](img/git_network_merge_end.png)
