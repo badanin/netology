@@ -1,0 +1,32 @@
+version: 3
+automerge: true
+delete_source_branch_on_merge: true
+parallel_plan: true
+parallel_apply: true
+projects:
+- name: my-project-name
+  dir: .
+  workspace: default
+  terraform_version: v1.2.2
+  delete_source_branch_on_merge: true
+  autoplan:
+    when_modified: ["*.tf", "../modules/**/*.tf"]
+    enabled: true
+  apply_requirements: [mergeable, approved]
+  workflow: myworkflow
+workflows:
+  myworkflow:
+    plan:
+      steps:
+      - run: ls -la
+      - init
+      - plan:
+          extra_args: ["-lock", "false"]
+      - run: echo done plan
+    apply:
+      steps:
+      - run: echo applying
+      - apply
+allowed_regexp_prefixes:
+- prod/
+- stage/
